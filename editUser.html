@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.js" ></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular-resource.js" ></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular-route.js" ></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular-cookies.js" ></script>
+    <script type="text/javascript" src="functions.js" ></script>
+</head>
+<body ng-app="mainApp" ng-controller="usersAdminController" ng-init="editUser()" >
+    <div><a href="users.html" >Felhasználók</a>&nbsp;<a href="login.html" >Login</a></div>
+        
+    <div>
+      <form name="form1" ng-submit="submitEdit()" novalidate >
+          <div>Felhasználó adatai:</div>
+          
+          <label for="firstName" >Keresztnév:</label><input type="text" name="firstName" id="firstName" ng-model="user.firstName" required /><br/>
+          <label for="lastName" >Vezetéknév:</label><input type="text" name="lastName" id="lastName" ng-model="user.lastName" required /><br/>
+          <label for="name" >Név:</label><input type="text" name="name" id="name" ng-model="user.name" ng-minlength="4" required /><br/>
+          
+          <label for="active" >Aktív:</label><input type="checkbox" name="active" id="active" ng-model="user.active" ng-true-value="true" ng-false-value="false" ng-checked="true" /><br/>          
+          <label for="lastName" >E-mail cím:</label><input type="text" id="lastName" ng-model="user.email" /><br/>
+          <label for="lastName" >Telefon:</label><input type="text" id="lastName" ng-model="user.phone" /><br/>
+          
+          <button type="submit" ng-disabled="form1.name.$invalid || form1.firstName.$invalid" >Mentés</button>
+          
+      </form>
+      
+      <span style="color:red" ng-show="form1.firstName.$invalid" >Kérem töltse ki a "Keresztnév" mezőt!</span><br/>
+      <span style="color:red" ng-show="form1.lastName.$invalid" >Kérem töltse ki a "Vezetéknév" mezőt!</span><br/>
+      <span style="color:red" ng-show="form1.name.$invalid" >Kérem töltse ki a "Név" mezőt minumum 4 karakterrel!</span><br/>
+      
+    </div>  
+    
+</body>
+</html>

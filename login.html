@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.js" ></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular-resource.js" ></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular-route.js" ></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular-cookies.js" ></script>
+    <script type="text/javascript" src="functions.js" ></script>
+</head>
+<body ng-app="mainApp" >
+  <div>
+    <form ng-controller="loginController" ng-submit="submit()" >
+        <div>Login:</div>
+        
+        <label for="UserName" >Felhasználónév:</label><input type="text" id="UserName" ng-model="credentials.username" /><br/>
+        <label for="Password" >Jelszó:</label><input type="password" id="Password" ng-model="credentials.password" />
+        
+        <button type="submit" >Belépés</button>
+        
+    </form>
+        
+  </div>  
+</body>
+</html>

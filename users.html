@@ -16,7 +16,7 @@
     <div>Felhasználók:</div> 
     <ul>
       <li ng-repeat="userItem in userList" >
-        {{ '(' + userItem.id + ') ' + userItem.firstName + ' ' + userItem.lastName + ', email:' + userItem.email + ', phone:' + userItem.phone}} &nbsp;<button ng-click="openEditUser(userItem.id)">Szerkeszt</button>&nbsp;<button ng-click="deleteUser(userItem.id)">Töröl</button>
+        {{ '(' + userItem.id + ') ' + 'email: ' + userItem.email }} &nbsp;<button ng-click="openEditUser(userItem.id)">Szerkeszt</button>&nbsp;<button ng-click="deleteUser(userItem.id)">Töröl</button>
       </li>
     </ul>    
     

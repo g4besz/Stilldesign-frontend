@@ -17,21 +17,17 @@
       <form name="form1" ng-submit="submitEdit()" novalidate >
           <div>Felhasználó adatai:</div>
           
-          <label for="firstName" >Keresztnév:</label><input type="text" name="firstName" id="firstName" ng-model="user.firstName" required /><br/>
-          <label for="lastName" >Vezetéknév:</label><input type="text" name="lastName" id="lastName" ng-model="user.lastName" required /><br/>
           <label for="name" >Név:</label><input type="text" name="name" id="name" ng-model="user.name" ng-minlength="4" required /><br/>
           
-          <label for="active" >Aktív:</label><input type="checkbox" name="active" id="active" ng-model="user.active" ng-true-value="true" ng-false-value="false" ng-checked="true" /><br/>          
-          <label for="lastName" >E-mail cím:</label><input type="text" id="lastName" ng-model="user.email" /><br/>
-          <label for="lastName" >Telefon:</label><input type="text" id="lastName" ng-model="user.phone" /><br/>
+          <label for="active" >Aktív:</label><input type="checkbox" name="active" id="active" ng-model="user.active" ng-true-value="true" ng-false-value="false" ng-checked="true"  /><br/>          
+          <label for="email" >E-mail cím:</label><input name="email" type="email" id="email" ng-model="user.email" required /><br/>
           
           <button type="submit" ng-disabled="form1.name.$invalid || form1.firstName.$invalid" >Mentés</button>
           
       </form>
       
-      <span style="color:red" ng-show="form1.firstName.$invalid" >Kérem töltse ki a "Keresztnév" mezőt!</span><br/>
-      <span style="color:red" ng-show="form1.lastName.$invalid" >Kérem töltse ki a "Vezetéknév" mezőt!</span><br/>
-      <span style="color:red" ng-show="form1.name.$invalid" >Kérem töltse ki a "Név" mezőt minumum 4 karakterrel!</span><br/>
+      <span style="color:red" ng-show="form1.name.$invalid" >Kérem töltse ki a "Név" mezőt minimum 4 karakterrel!</span><br/>
+      <span style="color:red" ng-show="form1.email.$invalid" >Kérem töltse ki az "E-mail" mezőt!</span><br/>
       
     </div>  
     

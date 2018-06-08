@@ -26,6 +26,8 @@ app.controller('loginController',
         $cookies.put("refresh_token", resp.data.refresh_token);
         
         window.location.href = "users.html";
+      }, function(resp){
+        showError(resp);
       }); 
         
     };    
@@ -38,14 +40,12 @@ app.controller('usersAdminController',
     $scope.userList = [];
     $scope.user = {
       id:"",
-      firstName:"",
-      lastName:"",
       email:"",
       phone:"",
       name:"",
       active:""
     };
-    
+        
     $scope.getUsers = function() {  
       $http({
         method: 'GET',
@@ -56,6 +56,8 @@ app.controller('usersAdminController',
         }
       }).then(function(resp){
         $scope.userList = resp.data.data;
+      }, function(resp){
+        showError(resp);
       }); 
     };    
     
@@ -70,6 +72,16 @@ app.controller('usersAdminController',
         }
       }).then(function(resp){
         window.location.href = "users.html";
+      }, function(resp){
+        if (resp.data.message){
+          if (resp.data.message.indexOf('SQLSTATE')>-1){    //handle sql state error
+            window.location.href = "users.html";
+          }else{
+            showError(resp);
+          }
+        }else{
+          showError(resp);
+        }
       }); 
     };    
     
@@ -89,6 +101,8 @@ app.controller('usersAdminController',
       }).then(function(resp){
         $scope.user = resp.data.data;
         $scope.user.active = true;    //set active flag default value
+      }, function(resp){
+        showError(resp);
       }); 
     };    
   
@@ -103,12 +117,18 @@ app.controller('usersAdminController',
         }
       }).then(function(resp){
         window.location.href = "users.html";
+      }, function(resp){
+        showError(resp);
       }); 
       
     
     };
       
     $scope.deleteUser = function(id) { 
+      if (confirm('Biztos, hogy törli a(z) ('+id+') azonosítójú felhasználót?')==false) {
+        return;
+      }
+      
       $http({
         method: 'DELETE',
         url: 'http://api.iss.stilldesign.work/admin/user/'+id,
@@ -120,10 +140,17 @@ app.controller('usersAdminController',
       }).then(function(resp){
           
         window.location.href = "users.html";
+      }, function(resp){
+        showError(resp);
       }); 
     
     
     };
 });
+
+function showError(err){
+  var mess = err.data.errors;
+  alert(JSON.stringify(mess));  
+}
 
   
